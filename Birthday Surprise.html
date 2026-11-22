@@ -134,7 +134,7 @@ footer{text-align:center;color:var(--muted);padding-block:48px 64px}
       <path d="M42 26C30 8 14 16 24 26M42 26C54 8 70 16 60 26" fill="none" stroke="#2ec4b6" stroke-width="5" stroke-linecap="round"/>
     </svg>
     <h1>A surprise is waiting</h1>
-    <p class="sub">I made this just for you. Enter the details to open it.</p>
+    <p class="sub">Someone made this just for you. Enter the details to open it.</p>
     <label for="u">Name</label>
     <input id="u" name="u" type="text" autocapitalize="none" required>
     <label for="p">Secret word</label>
@@ -148,7 +148,7 @@ footer{text-align:center;color:var(--muted);padding-block:48px 64px}
 <div id="site" hidden>
   <div class="wrap">
     <header class="hero">
-      <div class="heart" aria-hidden="true">🩷</div>
+      <div class="heart" aria-hidden="true">❤️</div>
       <p class="eyebrow" id="eyebrow">Today is your day</p>
       <h1>Happy Birthday,<br><em id="who"></em></h1>
       <p id="intro"></p>
@@ -197,7 +197,7 @@ footer{text-align:center;color:var(--muted);padding-block:48px 64px}
         <div id="letterBody"></div>
       </div>
     </section>
-    <footer id="foot"></footer>
+    <footer id="foot"><p id="madeBy"></p><p>&copy; 2026 loki_varient_01. All Rights Reserved.</p></footer>
   </div>
 </div>
 
@@ -216,7 +216,8 @@ footer{text-align:center;color:var(--muted);padding-block:48px 64px}
 <script>
 /* ===== EDIT ME: everything personal lives in this block ===== */
 const CONFIG = {
-  name: "Zenia",            // the name of the birthday person",
+  name: "Zenia",            // the name of the birthday person
+  name2: "Zenia ❤️",
   from: "Lokeshwaran",      // the name of the sender
   from2: "nan dhan",        // sign-off at the end of the letter
   user: "zenia",            // login name (not case sensitive)
@@ -288,7 +289,7 @@ const rain = () => { for(let i = 0; i < 6; i++) setTimeout(() => burst(Math.rand
 $("#hint").textContent = CONFIG.hint;
 function unlock(first){
   $("#login").hidden = true; $("#site").hidden = false;
-  window.scrollTo(0, 0);
+  window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   if(first){ burst(innerWidth / 2, innerHeight / 3, 160); rain(); }
 }
 $("#gate").addEventListener("submit", e => {
@@ -304,9 +305,9 @@ $("#gate").addEventListener("submit", e => {
 });
 
 /* Content */
-$("#who").textContent = CONFIG.name;
+$("#who").textContent = CONFIG.name2;
 $("#intro").textContent = CONFIG.intro;
-$("#foot").textContent = "Made with love by " + CONFIG.from;
+$("#madeBy").textContent = "Made with love by " + CONFIG.from;
 
 /* Cake */
 const candles = $("#candles");
@@ -401,8 +402,5 @@ $("#openLetter").addEventListener("click", e => {
 
 try{ if(sessionStorage.getItem("bday-ok") === "1") unlock(false); }catch(_){}
 </script>
-<footer>
-  <p>&copy; 2026 loki_varient_01. All Rights Reserved.</p>
-</footer>
 
 </body></html>
